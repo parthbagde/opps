@@ -1,0 +1,283 @@
+PRACTICLE 1 CALCULATOR
+
+import java.util.Scanner;
+
+class Calculator {
+
+    double calculate(double a, double b, int choice) {
+
+        switch(choice) {
+            case 1:
+                return a + b;
+
+            case 2:
+                return a - b;
+
+            case 3:
+                return a * b;
+
+            case 4:
+                if(b == 0)
+                    throw new ArithmeticException("Cannot divide by zero");
+                return a / b;
+
+            default:
+                System.out.println("Invalid Choice");
+                return 0;
+        }
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        Calculator c = new Calculator();
+
+        while(true) {
+
+            try {
+
+                System.out.println("\n1.Add  2.Subtract  3.Multiply  4.Divide  5.Exit");
+                System.out.print("Enter choice: ");
+                int choice = sc.nextInt();
+
+                if(choice == 5)
+                    break;
+
+                System.out.print("Enter first number: ");
+                double a = sc.nextDouble();
+
+                System.out.print("Enter second number: ");
+                double b = sc.nextDouble();
+
+                double result = c.calculate(a, b, choice);
+
+                System.out.println("Result = " + result);
+
+            } catch(Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                sc.nextLine();
+            }
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+PRACTICLE 2 E COMMERCE ORDER PROCESSING SYSTEM
+
+
+
+import java.util.Scanner;
+
+class Order {
+
+    String product;
+    int quantity;
+    double price;
+
+    // Constructor
+    Order(String p, int q, double pr) {
+        product = p;
+        quantity = q;
+        price = pr;
+    }
+
+    void bill() {
+
+        double total = quantity * price;
+
+        System.out.println("\n----- ORDER DETAILS -----");
+        System.out.println("Product : " + product);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Price   : " + price);
+        System.out.println("Total   : " + total);
+
+        // Conditional Logic
+        if(total > 1000)
+            System.out.println("Discount Applied!");
+        else
+            System.out.println("No Discount");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Dynamic Inputs
+        System.out.print("Enter Product Name: ");
+        String product = sc.nextLine();
+
+        System.out.print("Enter Quantity: ");
+        int quantity = sc.nextInt();
+
+        System.out.print("Enter Price: ");
+        double price = sc.nextDouble();
+
+        // Object Creation using Constructor
+        Order o = new Order(product, quantity, price);
+
+        o.bill();
+
+        sc.close();
+    }
+}
+
+
+
+PRACTICLE 3 METHOD OVERLOADING
+
+
+
+class Demo {
+
+    // Method Overloading
+    void show(int a) {
+        System.out.println("Integer: " + a);
+    }
+
+    void show(double a) {
+        System.out.println("Double: " + a);
+    }
+
+    void show(int a, int b) {
+        System.out.println("Sum: " + (a + b));
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Demo d = new Demo();
+
+        d.show(10);
+        d.show(5.5);
+        d.show(10, 20);
+    }
+}
+
+
+
+PRACTICLE 4 OPERATIONS ON ARRAY
+
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int arr[] = {10, 20, 30, 40, 50};
+        int sum = 0;
+
+        // Display Elements & Sum
+        System.out.println("Array Elements:");
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+            sum += arr[i];
+        }
+
+        // Average
+        double avg = sum / arr.length;
+
+        // Search Element
+        System.out.print("\nEnter element to search: ");
+        int search = sc.nextInt();
+
+        boolean found = false;
+
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] == search) {
+                found = true;
+            }
+        }
+
+        // Output
+        System.out.println("Sum = " + sum);
+        System.out.println("Average = " + avg);
+
+        if(found)
+            System.out.println("Element Found");
+        else
+            System.out.println("Element Not Found");
+
+        sc.close();
+    }
+}
+
+
+
+
+PRACTICLE 5 SINGLE INHERITANCE
+
+
+
+class Animal {
+
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+// Single Inheritance
+class Dog extends Animal {
+
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Dog d = new Dog();
+
+        d.sound();   // Parent class method
+        d.bark();    // Child class method
+    }
+}
+
+
+
+PRACTICLE 6 POLYMORPHISM
+
+class Animal {
+
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+// Polymorphism using Method Overriding
+class Dog extends Animal {
+
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Animal a = new Dog();
+
+        a.sound();
+    }
+}
+
+
+
+
